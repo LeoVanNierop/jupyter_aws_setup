@@ -1,5 +1,5 @@
 #!/bin/bash
-
+USER_HOME=$(getent passwd $SUDO_USER | cut -d: -f6)
 FLAG="/var/log/firstboot_jupyter.log"
 if [ ! -f $FLAG ]; then
     echo "installing configured jupyter server. This may take a while."
@@ -16,7 +16,7 @@ if [ ! -f $FLAG ]; then
     PATH=$PATH:/usr/local/bin/
     export PATH
     jupyter notebook --generate-config
-    openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout ~/.jupyter/sign.key -out ~/.jupyter/sign.pem
+    openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout USER_HOME/.jupyter/sign.key -out USER_HOME/.jupyter/sign.pem
     touch $FLAG
 else
     echo "No jupyter installation needed"
