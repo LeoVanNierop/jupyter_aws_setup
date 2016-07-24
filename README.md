@@ -1,5 +1,6 @@
 # jupyter_aws_setup
 A few scripts that set up a jupyter notebook server on an aws instance running aws linux, basically following http://jupyter-notebook.readthedocs.io/en/latest/public_server.html
+This is using a self-signed ssl certificate, which means that your browser will complain that it is not secure. I may fix that later, but for now that is what it is.
 
 NOTE: CURRENTLY STILL FLAWED, DON"T FOLLOW THE BELOW YET
 
@@ -7,7 +8,7 @@ If you want to learn how to do this, follow a proper tutorial. If, however, you 
 1) Launch an aws instance, make sure that the security group allows http connections on port 9999
 2) ssh in and run:
 
- sudo -y yum install git
+ sudo yum -y install git
  
  git clone https://github.com/LeoVanNierop/jupyter_aws_setup.git
  
