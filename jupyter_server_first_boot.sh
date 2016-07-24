@@ -1,7 +1,7 @@
 #!/bin/bash
 FLAG="/var/log/firstboot_jupyter.log"
 USER_HOME=$(getent passwd $SUDO_USER | cut -d: -f6)
-USER_NAME=
+USER_NAME=$SUDO_USER
 if [ ! -f $FLAG ]; then
     echo "installing configured jupyter server. This may take a while."
     yum -y update
