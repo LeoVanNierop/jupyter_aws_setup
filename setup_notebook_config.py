@@ -4,7 +4,11 @@ import os
 import sys
 home = os.getenv('HOME')
 notebook_dir = os.path.join(home, 'notebooks')
-os.makedirs(notebook_dir)
+try:
+    os.makedirs(notebook_dir)
+except:
+    #exists
+    pass
 pwd = passwd()
 with open(os.path.join(home, '.jupyter/jupyter_notebook_config.py'), 'a') as f:
     f.write('c.NotebookApp.password = {}\n'.format(repr(pwd)))
