@@ -1,5 +1,4 @@
 #!/bin/bash
-USER_HOME=$(getent passwd $SUDO_USER | cut -d: -f6)
 FLAG="/var/log/firstboot_jupyter.log"
 if [ ! -f $FLAG ]; then
     echo "installing configured jupyter server. This may take a while."
@@ -15,8 +14,8 @@ if [ ! -f $FLAG ]; then
     /usr/local/bin/pip3 install numpy scipy matplotlib pandas sympy nose ipython jupyter
     PATH=$PATH:/usr/local/bin
     export PATH
-    jupyter notebook --generate-config
-    openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout $USER_HOME/.jupyter/sign.key -out $USER_HOME/.jupyter/sign.pem
+    sudo -u $SUDO_USER jupyter notebook --generate-config
+    sudo -u $SUDO_USER openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout ~/.jupyter/sign.key -out ~/.jupyter/sign.pem
     touch $FLAG
 else
     echo "No jupyter installation needed"
