@@ -26,6 +26,6 @@ nohup jupyter notebook &
 
 open your browser and go to
 
-<your aws instance public dns>:9999
+(your aws instance public dns):9999
 
  
