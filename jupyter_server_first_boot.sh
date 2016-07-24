@@ -15,6 +15,7 @@ if [ ! -f $FLAG ]; then
     /usr/local/bin/pip3 install numpy scipy matplotlib pandas sympy nose ipython jupyter
     PATH=$PATH:/usr/local/bin
     export PATH
+    mkdir $USER_HOME/.jupyter
     touch $USER_HOME/.jupyter/jupyter_notebook_config.py
     openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout $USER_HOME/.jupyter/sign.key -out $USER_HOME/.jupyter/sign.pem
     touch $FLAG
