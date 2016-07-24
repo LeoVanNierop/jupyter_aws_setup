@@ -17,7 +17,7 @@ if [ ! -f $FLAG ]; then
     export PATH
     mkdir $USER_HOME/.jupyter
     touch $USER_HOME/.jupyter/jupyter_notebook_config.py
-    openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout $USER_HOME/.jupyter/sign.key -out $USER_HOME/.jupyter/sign.pem
+    printf 'NL\nNOORDHOLLAND\nAMSTERDAM\nME\nAWESOMESECTION\nLEO\nFAKE@SERVER.COM\n' | openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout $USER_HOME/.jupyter/sign.key -out $USER_HOME/.jupyter/sign.pem
     touch $FLAG
 else
     echo "No jupyter installation needed"
