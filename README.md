@@ -28,4 +28,7 @@ open your browser and go to
 
 https://(your aws instance public dns):9999
 
- 
+If you want the jupyter server to start up when you start the instance after stopping it, add the following line to /etc/rc.local
+
+su ec2-user -c "/home/ec2-user/jupyter_aws_setup/start_jupyter.sh"
+
