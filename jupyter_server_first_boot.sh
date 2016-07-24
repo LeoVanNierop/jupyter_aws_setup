@@ -13,7 +13,8 @@ if [ ! -f $FLAG ]; then
     yum -y install freetype freetype-devel
     yum -y install libpng libpng-devel
     /usr/local/bin/pip3 install numpy scipy matplotlib pandas sympy nose ipython jupyter
-    sleep 2
+    PATH=$PATH:/usr/local/bin/
+    export PATH
     jupyter notebook --generate-config
     openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout ~/.jupyter/sign.key -out ~/.jupyter/sign.pem
     touch $FLAG
