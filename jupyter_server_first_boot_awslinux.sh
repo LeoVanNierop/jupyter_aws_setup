@@ -18,7 +18,6 @@ if [ ! -f $FLAG ]; then
     export PATH
     mkdir $USER_HOME/.jupyter
     chown $USER_NAME:$USER_NAME $USER_HOME/.jupyter
-    chmod 
     touch $USER_HOME/.jupyter/jupyter_notebook_config.py
     chown $USER_NAME:$USER_NAME $USER_HOME/.jupyter/jupyter_notebook_config.py
     printf 'NL\nNOORDHOLLAND\nAMSTERDAM\nME\nAWESOMESECTION\nLEO\nFAKE@SERVER.COM\n' | openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout $USER_HOME/.jupyter/sign.key -out $USER_HOME/.jupyter/sign.pem
