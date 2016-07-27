@@ -24,10 +24,7 @@ if [ ! -f $FLAG ]; then
     chown $USER_NAME:$USER_NAME $USER_HOME/.jupyter/jupyter_notebook_config.py
     wget https://dl.eff.org/certbot-auto
     chmod a+x certbot-auto
-
-    #get certification
-    printf '\n' | ./certbot-auto certonly --standalone -d external_host
-
+    printf 'NL\nNOORDHOLLAND\nAMSTERDAM\nME\nAWESOMESECTION\nLEO\nFAKE@SERVER.COM\n' | openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout $USER_HOME/.jupyter/sign.key -out $USER_HOME/.jupyter/sign.pem
     touch $FLAG
 else
     echo "No jupyter installation needed"
