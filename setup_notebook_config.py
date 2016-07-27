@@ -1,4 +1,4 @@
-#!/usr/local/bin/ipython
+#!/usr/local/bin/ipython3
 from notebook.auth import passwd
 import os
 import sys

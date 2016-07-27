@@ -2,6 +2,9 @@
 FLAG="/var/log/firstboot_jupyter.log"
 USER_HOME=$(getent passwd $SUDO_USER | cut -d: -f6)
 USER_NAME=$SUDO_USER
+external_host = $(hostname -f | sed "s/internal$/amazonaws.com/")
+
+
 if [ ! -f $FLAG ]; then
     echo "installing configured jupyter server. This may take a while."
     apt-get -y update
@@ -21,6 +24,10 @@ if [ ! -f $FLAG ]; then
     chown $USER_NAME:$USER_NAME $USER_HOME/.jupyter/jupyter_notebook_config.py
     wget https://dl.eff.org/certbot-auto
     chmod a+x certbot-auto
+
+    #get certification
+    printf '\n' | ./certbot-auto certonly --standalone -d external_host
+
     touch $FLAG
 else
     echo "No jupyter installation needed"
