@@ -7,7 +7,9 @@ external_host = $(hostname -f | sed "s/internal$/amazonaws.com/")
 
 if [ ! -f $FLAG ]; then
     echo "installing configured jupyter server. This may take a while."
+    echo "deb http://cran-mirror.cs.uu.nl/bin/linux/ubuntu trusty/" >> /etc/apt/sources.list
     apt-get -y update
+    apt-get -y install r-base
     apt-get -y install python3-pip
     pip3 install --upgrade pip
     apt-get -y install python3-dev
