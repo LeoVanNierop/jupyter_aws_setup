@@ -8,13 +8,13 @@ If you want to learn how to do this, follow a proper tutorial. If, however, you 
 1) Launch an aws instance, make sure that the security group allows http connections on port 9999
 2) ssh in and run:
 
- sudo apt-get -y install git
+ sudo yum -y install git
  
  git clone https://github.com/LeoVanNierop/jupyter_aws_setup.git
  
  cd jupyter_aws_setup
  
- sudo ./jupyter_server_first_boot_ubuntu.sh
+ sudo ./jupyter_server_first_boot_awslinux.sh
  
 Go get a coffee, this is going to take a while (approx. 5 minutes on a free tier micro instance)
 
