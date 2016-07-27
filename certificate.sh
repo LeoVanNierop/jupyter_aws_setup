@@ -1,4 +1,4 @@
 #!/bin/bash
 
 #get certification
-printf '\n' | ./certbot-auto certonly --standalone -d external_host
+printf '\n' | ./certbot-auto certonly --debug --standalone -d external_host
