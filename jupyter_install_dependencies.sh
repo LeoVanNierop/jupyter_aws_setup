@@ -21,8 +21,9 @@ if [ ! -f $FLAG ]; then
     touch ~/.jupyter/jupyter_notebook_config.py
     wget https://dl.eff.org/certbot-auto
     chmod a+x certbot-auto
+    sudo chmod o+w /usr/local/lib/R/site-library
     ~/jupyter_aws_setup/setup_R_kernel.r
-    #printf 'NL\nNOORDHOLLAND\nAMSTERDAM\nME\nAWESOMESECTION\nLEO\nFAKE@SERVER.COM\n' | openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout $USER_HOME/.jupyter/sign.key -out $USER_HOME/.jupyter/sign.pem
+    #printf 'NL\nNOORDHOLLAND\nAMSTERDAM\nME\nAWESOMESECTION\nLEO\nFAKE@SERVER.COM\n' | openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout ~/.jupyter/sign.key -out ~/.jupyter/sign.pem
 
     sudo touch $FLAG
 else

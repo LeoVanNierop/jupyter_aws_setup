@@ -20,7 +20,7 @@ Go get a coffee, this is going to take a while (approx. 5 minutes on a free tier
 
 Get a domain name. Point it at your instance. Certbot has aws on its blacklist, so you won't get an ssl certificate without your own domain pointed at it.
 For a free domain, go to www.dot.tk, and follow their instructions. NOTE: for dot.tk you need to have a server running to respond to pings. Runserver.sh is a one-line
-server that just returns index.html with  a 200 status line. Have this running when you start the registration
+server that just returns index.html with  a 200 status line. Have this running when you start the registration (sudo ./runserver.sh)
 
 run:
 
