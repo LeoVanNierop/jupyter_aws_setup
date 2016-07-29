@@ -14,7 +14,7 @@ If you want to learn how to do this, follow a proper tutorial. If, however, you 
  
  cd jupyter_aws_setup
  
- sudo ./jupyter_server_first_boot_ubuntu.sh
+ ./jupyter_server_first_boot_ubuntu.sh
  
 Go get a coffee, this is going to take a while (approx. 5 minutes on a free tier micro instance)
 
