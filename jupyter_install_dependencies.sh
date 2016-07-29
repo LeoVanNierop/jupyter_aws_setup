@@ -1,5 +1,5 @@
 #!/bin/bash
-
+FLAG="/var/log/firstboot_jupyter.log"
 
 
 if [ ! -f $FLAG ]; then
