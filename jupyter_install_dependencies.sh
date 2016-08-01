@@ -18,7 +18,7 @@ if [ ! -f $FLAG ]; then
     sudo -H apt-get -y --force-yes install python3-nose ipython3
     sudo -H pip3 install sympy jupyter
     mkdir ~/.jupyter/
-    touch ~/.jupyter/jupyter_notebook_config.py
+    mv ~/jupyter_aws_setup/jupyter_notebook_config.py ~/.jupyter/
     wget https://dl.eff.org/certbot-auto
     chmod a+x certbot-auto
     sudo chmod o+w /usr/local/lib/R/site-library
