@@ -1,12 +1,32 @@
 import subprocess
 from datetime import datetime
 import os
+from notebook.auth.logout import LogoutHandler
+from notebook.auth.login import LoginHandler
 
 c = get_config()
 
 c.NotebookApp.ip = '*'
 c.NotebookApp.open_browser = False
 c.NotebookApp.port = 9999
+
+class PushOnLogoutHandler(LogoutHandler):
+    def get(self):
+        message = "jupyter auto save at {}".format(datetime.now())
+        subprocess.check_call(['git', 'commit', '-am', message], cwd=c.NotebookApp.notebook_dir)
+        subprocess.check_call(['git', 'push'], cwd=c.NotebookApp.notebook_dir)
+        super().get()
+
+c.NotebookApp.logout_handler_class = PushOnLogoutHandler
+
+class PullOnLoginHandler(LoginHandler):
+    #We initiate a git pull if authentication passes: upon redirect
+    def redirect(self, url, permanent=False, status=None):
+        subprocess.check_call(['git', 'pull', '-X', 'ours'], cwd=c.NotebookApp.notebook_dir)
+        super().redirect()
+
+
+
 
 def scrub_output_pre_save(model, **kwargs):
     """scrub output before saving notebooks"""
@@ -35,8 +55,6 @@ def git_push_post_save(model, os_path, **kwargs):
     subprocess.check_call(['jupyter', 'nbconvert', '--to', 'script', fname], cwd=d)
     subprocess.check_call(['jupyter', 'nbconvert', '--to', 'html', fname], cwd=d)
 
-    message = "jupyter auto save at {}".format(datetime.now())
-    subprocess.check_call(['git', 'commit', '-am', message], cwd=d)
-    subprocess.check_call(['git', 'push'], cwd=d)
+
 
 c.FileContentsManager.post_save_hook = git_push_post_save
