@@ -46,7 +46,7 @@ def scrub_output_pre_save(model, **kwargs):
 c.FileContentsManager.pre_save_hook = scrub_output_pre_save
 
 
-def git_push_post_save(model, os_path, **kwargs):
+def convert_post_save(model, os_path, **kwargs):
     #make sure you set up a good gitignore. Also look at git pre-commit hook for stripping output
     if model['type'] != 'notebook':
         return
@@ -57,4 +57,4 @@ def git_push_post_save(model, os_path, **kwargs):
 
 
 
-c.FileContentsManager.post_save_hook = git_push_post_save
+c.FileContentsManager.post_save_hook = convert_post_save
