@@ -12,9 +12,13 @@ c.NotebookApp.port = 9999
 
 class PushOnLogoutHandler(LogoutHandler):
     def get(self):
-        message = "jupyter auto save at {}".format(datetime.now())
-        subprocess.check_call(['git', 'commit', '-am', message], cwd=c.NotebookApp.notebook_dir)
-        subprocess.check_call(['git', 'push'], cwd=c.NotebookApp.notebook_dir)
+        message = '"jupyter auto save at {}"'.format(datetime.now())
+        try:
+            subprocess.check_call(['git', 'add', '-A'], cwd=c.NotebookApp.notebook_dir)
+            subprocess.check_call(['git', 'commit', '-am', message], cwd=c.NotebookApp.notebook_dir)
+            subprocess.check_call(['git', 'push'], cwd=c.NotebookApp.notebook_dir)
+        except:
+            pass
         super().get()
 
 c.NotebookApp.logout_handler_class = PushOnLogoutHandler

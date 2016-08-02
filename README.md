@@ -26,7 +26,16 @@ run:
 
 ./certificate.sh
 
-nohup jupyter notebook &
+and follow the instructions to create an ssl certificate. Currently, to get it to work, I copied the relevant key files to ~./jupyter using:
+
+sudo copy /etc/letsencrypt/archive/(your domain name)/*.pem /home/ubuntu/.jupyter
+sudo chown ubuntu:ubuntu /home/ubuntu/.jupyter/*.pem
+
+Create a remote notebook repository, and set the upstream of ~/notebooks to it. 
+
+
+to start the notebook server:
+nohup start_jupyter.sh &
 
 open your browser and go to
 
@@ -34,5 +43,5 @@ https://(your aws instance public dns):9999
 
 If you want the jupyter server to start up when you start the instance after stopping it, add the following line to /etc/rc.local
 
-su ec2-user -c "/home/ec2-user/jupyter_aws_setup/start_jupyter.sh"
+su ubuntu -c "/home/ubuntu/jupyter_aws_setup/start_jupyter.sh"
 

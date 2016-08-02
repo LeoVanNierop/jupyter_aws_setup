@@ -11,6 +11,7 @@ except:
     pass
 pwd = passwd()
 with open(os.path.join(home, '.jupyter/jupyter_notebook_config.py'), 'a') as f:
+    f.write('\n')
     f.write('c.NotebookApp.password = {}\n'.format(repr(pwd)))
     f.write("c.NotebookApp.certfile = {}\n".format(repr(os.path.join(home, '.jupyter/sign.pem'))))
     f.write("c.NotebookApp.keyfile = {}\n".format(repr(os.path.join(home, '.jupyter/sign.key'))))

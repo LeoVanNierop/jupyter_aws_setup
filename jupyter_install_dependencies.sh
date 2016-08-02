@@ -17,6 +17,7 @@ if [ ! -f $FLAG ]; then
     sudo -H apt-get -y --force-yes install python3-numpy python3-scipy python3-matplotlib python3-pandas
     sudo -H apt-get -y --force-yes install python3-nose ipython3
     sudo -H pip3 install sympy jupyter
+    sudo -H pipr install --upgrade numpy scipy matplotlib pandas nose ipython
     mkdir ~/.jupyter/
     mv ~/jupyter_aws_setup/jupyter_notebook_config.py ~/.jupyter/
     wget https://dl.eff.org/certbot-auto
